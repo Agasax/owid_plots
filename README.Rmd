@@ -1,7 +1,9 @@
 ---
-title: "README"
-author: "Created by Lars Mølgaard Saxhaug\n"
-date: "Last compiled on `r format(Sys.time(), '%A %d %B, %Y')`"
+title: "OWID COVID-19 data visualisation"
+author: 
+  - "Lars Mølgaard Saxhaug https://twitter.com/load_dependent\n"
+date: 
+  - Last compiled on `r format(Sys.time(), '%A %d %B, %Y')`
 output: github_document
 ---
 
@@ -13,6 +15,7 @@ library(tidyquant)
 library(patchwork)
 library(zoo)
 library(here)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r data_import}
@@ -34,14 +37,17 @@ countries <- c("Bulgaria", "Denmark", "Romania")
 from_date <- as_date("2021-03-01")
 ```
 
-#### Countries of interest: 
-`r countries `
+#### Countries of interest:
+
+`r countries`
 
 #### Date range of interest
-From   `r format(from_date, '%A %d %B, %Y')` to `r format(Sys.time(), '%A %d %B, %Y')`
+
+From `r format(from_date, '%A %d %B, %Y')` to `r format(Sys.time(), '%A %d %B, %Y')`
 
 #### Adjusted deaths
-```{r adjusted_deaths}
+
+```{r adjusted_deaths, fig.cap="Vaccination coverage adjusted Deaths"}
 df %>%
   filter(location %in% countries) %>%
   filter(date >= from_date) %>%
@@ -58,7 +64,9 @@ df %>%
     caption = "@load_dependent \n Datasource: https://ourworldindata.org"
   )
 ```
+
 #### Vaccinations
+
 ```{r vaccinations}
 p1 <- df %>%
   filter(location %in% countries) %>%
@@ -89,7 +97,9 @@ p2 <- df %>%
 p1 / p2 + plot_annotation(title = "Vaccination", caption = "@load_dependent \n Datasource: https://ourworldindata.org") +
   plot_layout(guides = "collect") & theme(legend.position = "bottom")
 ```
+
 #### New cases adjusted for vaccination coverage
+
 ```{r new cases}
 df %>%
   filter(location %in% countries) %>%
@@ -105,7 +115,8 @@ df %>%
   labs(subtitle = "Rolling new cases\nAdjusted for unvaccinated share of population\nPer 100.000")
 ```
 
-#### Cases, admissions and deaths 
+#### Cases, admissions and deaths
+
 ```{r cases_adm_deathc}
 
 value_names <- c(
@@ -137,6 +148,7 @@ test_countries <- c("Norway", "Denmark", "Sweden")
 ```
 
 #### Test positivity rate and tests per case in `r test_countries`
+
 ```{r tests}
 p1 <- df %>%
   filter(location %in% test_countries) %>%
@@ -168,4 +180,3 @@ p2 <- df %>%
 p1 + p2 + plot_annotation(caption = "@load_dependent \n Datasource: https://ourworldindata.org") +
   plot_layout(guides = "collect") & theme(legend.position = "bottom")
 ```
-
