@@ -33,7 +33,7 @@ df <- owid_covid_data %>%
 ```
 
 ```{r countries, echo=FALSE}
-countries <- c("Bulgaria", "Denmark", "Romania")
+countries <- c("Norway", "Denmark", "Romania")
 from_date <- as_date("2021-03-01")
 ```
 
@@ -47,7 +47,7 @@ From `r format(from_date, '%A %d %B, %Y')` to `r format(Sys.time(), '%A %d %B, %
 
 #### Adjusted deaths
 
-```{r adjusted_deaths, fig.cap="Vaccination coverage adjusted Deaths"}
+```{r adjusted_deaths}
 df %>%
   filter(location %in% countries) %>%
   filter(date >= from_date) %>%
