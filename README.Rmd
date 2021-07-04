@@ -33,8 +33,8 @@ df <- owid_covid_data %>%
 ```
 
 ```{r countries, echo=FALSE}
-countries <- c("Norway", "Denmark", "Romania")
-from_date <- as_date("2021-03-01")
+countries <- c( "Norway", "Denmark","Romania")
+from_date <- as_date("2021-04-01")
 ```
 
 #### Countries of interest:
@@ -120,13 +120,13 @@ df %>%
 ```{r cases_adm_deathc}
 
 value_names <- c(
-  "hosp_adjusted" = "Adjusted number of hospitalised",
-  "adjusted_deaths" = "Adjusted number of deaths",
-  "icu_adj" = "Adjusted number of ICU beds"
+  "hosp_adjusted" = "Adjusted n. of hospitalised",
+  "adjusted_deaths" = "Adjusted n. of deaths",
+  "icu_adj" = "Adjusted n. of ICU beds"
 )
-
+triptych_country <- "United Kingdom"
 df %>%
-  filter(location %in% c("United Kingdom")) %>%
+  filter(location %in% triptych_country) %>%
   filter(date >= as.POSIXct("2021-02-01")) %>%
   drop_na(hosp_adjusted, adjusted_deaths, icu_adj) %>%
   pivot_longer(cols = c(hosp_adjusted, adjusted_deaths, icu_adj)) %>%
@@ -138,7 +138,7 @@ df %>%
   ggthemes::scale_colour_fivethirtyeight(name = "Country") +
   ggthemes::theme_fivethirtyeight() +
   labs(
-    subtitle = "COVID-19 deaths, hospitalisations and ICU beds \nAdjusted for share of population not fully vaccinated (per 100.000)",
+    subtitle = paste0("COVID-19 deaths, hospitalisations and ICU beds in ",triptych_country, "\nAdjusted for share of population not fully vaccinated (per 100.000)"),
     caption = "@load_dependent \n Datasource: https://ourworldindata.org"
   )
 ```

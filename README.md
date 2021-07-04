@@ -2,7 +2,7 @@ OWID COVID-19 data visualisation
 ================
 Lars Mølgaard Saxhaug <https://twitter.com/load_dependent>
 
-Last compiled on Thursday 01 July, 2021
+Last compiled on Sunday 04 July, 2021
 
 #### Countries of interest:
 
@@ -10,7 +10,7 @@ Norway, Denmark, Romania
 
 #### Date range of interest
 
-From Monday 01 March, 2021 to Thursday 01 July, 2021
+From Thursday 01 April, 2021 to Sunday 04 July, 2021
 
 #### Adjusted deaths
 
