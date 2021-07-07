@@ -5,8 +5,7 @@ author:
 date: 
   - Last compiled on `r format(Sys.time(), '%A %d %B, %Y')`
 output: 
-    html_document:
-      keep_md: TRUE
+    github_document
 ---
 
 ```{r setup, include=FALSE}
