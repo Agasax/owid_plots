@@ -34,7 +34,7 @@ df <- owid_covid_data %>%
 ```
 
 ```{r countries, echo=FALSE}
-countries <- c( "Norway", "Denmark","United Kingdom")
+countries <- c( "France", "United States","United Kingdom")
 from_date <- as_date("2021-04-01")
 ```
 
@@ -125,7 +125,7 @@ value_names <- c(
   "adjusted_deaths" = "Adjusted no. of deaths",
   "icu_adj" = "Adjusted no. of ICU beds"
 )
-triptych_country <- c("United Kingdom")
+triptych_country <- countries
 df %>%
   filter(location %in% triptych_country) %>%
   filter(date >= as.POSIXct("2021-04-01")) %>%
@@ -146,7 +146,7 @@ df %>%
 ```
 
 ```{r test_countries,echo=FALSE}
-test_countries <- c("Norway", "Denmark", "United Kingdom")
+test_countries <- c("Denmark", "Norway", "United Kingdom")
 ```
 
 #### Test positivity rate and tests per case in `r test_countries`
