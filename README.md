@@ -2,15 +2,15 @@ OWID COVID-19 data visualisation
 ================
 Lars Mølgaard Saxhaug <https://twitter.com/load_dependent>
 
-Last compiled on Thursday 29 July, 2021
+Last compiled on Monday 20 September, 2021
 
 #### Countries of interest:
 
-France, United States, United Kingdom
+Norway, United Kingdom, Poland
 
 #### Date range of interest
 
-From Thursday 01 April, 2021 to Thursday 29 July, 2021
+From Thursday 01 April, 2021 to Monday 20 September, 2021
 
 #### Adjusted deaths
 
@@ -20,9 +20,11 @@ From Thursday 01 April, 2021 to Thursday 29 July, 2021
 
 ![](README_files/figure-gfm/vaccinations-1.png)<!-- -->
 
+![](README_files/figure-gfm/vaccination_days-1.png)<!-- -->
+
 #### New cases adjusted for vaccination coverage
 
-![](README_files/figure-gfm/new%20cases-1.png)<!-- -->
+![](README_files/figure-gfm/new_cases-1.png)<!-- -->
 
 #### Cases, admissions and deaths
 

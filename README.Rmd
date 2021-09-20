@@ -34,7 +34,7 @@ df <- owid_covid_data %>%
 ```
 
 ```{r countries, echo=FALSE}
-countries <- c( "France", "United States","United Kingdom")
+countries <- c( "Norway", "United Kingdom","Poland")
 from_date <- as_date("2021-04-01")
 ```
 
@@ -99,9 +99,32 @@ p1 / p2 + plot_annotation( caption = "@load_dependent \n Datasource: https://our
   plot_layout(guides = "collect") & theme(legend.position = "bottom")
 ```
 
+```{r vaccination_days}
+
+
+df %>%
+    filter(location=="Norway") %>%
+    filter(date >= from_date) %>% 
+  mutate(day=wday(as.Date(date),label = TRUE)) %>% 
+  drop_na(new_vaccinations) %>% 
+  group_by(day) %>% 
+    summarise(daily_vacc=sum(new_vaccinations)) %>%
+  mutate(weekday_porportion=( daily_vacc/sum(daily_vacc)),
+         weekday_percent=scales::percent( daily_vacc/sum(daily_vacc))) %>% 
+  ggplot(aes(x=day,y=weekday_porportion))+
+  geom_bar(stat = "identity")+
+  scale_y_continuous(labels = scales::percent_format())+
+  ggthemes::theme_fivethirtyeight()+
+  ggthemes::scale_fill_fivethirtyeight()+
+  labs(
+    subtitle = "Reported new vaccinations in Norway by day of week",
+    caption = "@load_dependent \n Datasource: https://ourworldindata.org"
+  )
+```
+
 #### New cases adjusted for vaccination coverage
 
-```{r new cases}
+```{r new_cases}
 df %>%
   filter(location %in% countries) %>%
   filter(date >= from_date) %>%
